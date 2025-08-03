@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800;
+    @apply text-slate-900 dark:text-slate-100;
+  }
+}
+
+@layer components {
+  .link-card {
+    @apply relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700;
+    @apply bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-lg hover:shadow-primary-500/20;
+    @apply active:scale-95;
+  }
+  
+  .link-card-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4;
+  }
+  
+  .link-card-row {
+    @apply flex flex-col space-y-3;
+  }
+  
+  .link-card-bento {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4;
+  }
+  
+  .link-card-bento .featured {
+    @apply sm:col-span-2 lg:col-span-2 lg:row-span-2;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600;
+    @apply text-white font-semibold rounded-lg;
+    @apply transition-all duration-200 ease-out;
+    @apply hover:from-primary-600 hover:to-primary-700;
+    @apply active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary-500/50;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-white/80 dark:bg-slate-800/80;
+    @apply text-slate-700 dark:text-slate-300 font-semibold rounded-lg;
+    @apply border border-slate-200 dark:border-slate-700;
+    @apply transition-all duration-200 ease-out;
+    @apply hover:bg-white dark:hover:bg-slate-800;
+    @apply active:scale-95 focus:outline-none focus:ring-2 focus:ring-slate-500/50;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+  }
+  
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+} 
