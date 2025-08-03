@@ -27,14 +27,14 @@ export default function ProfileHeader({ profile }: ProfileHeaderProps) {
       {/* Avatar */}
       <div className="mb-6">
         <div className="relative inline-block">
-          <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-lg">
+          <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
             <img
               src={profile.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.displayName)}&size=96&background=0ea5e9&color=fff`}
               alt={profile.displayName}
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center">
+          <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
             <span className="text-white text-sm font-bold">✓</span>
           </div>
         </div>
@@ -42,11 +42,11 @@ export default function ProfileHeader({ profile }: ProfileHeaderProps) {
 
       {/* Name and Bio */}
       <div className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-slate-200 mb-2">
+        <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">
           {profile.displayName}
         </h1>
         {profile.bio && (
-          <p className="text-slate-600 dark:text-slate-400 text-lg max-w-md mx-auto leading-relaxed">
+          <p className="text-white/70 text-lg max-w-md mx-auto leading-relaxed">
             {profile.bio}
           </p>
         )}
@@ -68,7 +68,7 @@ export default function ProfileHeader({ profile }: ProfileHeaderProps) {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-10 h-10 rounded-full bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary-500 hover:border-primary-500 transition-all duration-200"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all duration-200 backdrop-blur-sm"
               >
                 <Icon className="w-5 h-5" />
               </motion.a>
@@ -78,7 +78,7 @@ export default function ProfileHeader({ profile }: ProfileHeaderProps) {
       )}
 
       {/* Divider */}
-      <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full mx-auto mb-6" />
+      <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-6" />
     </motion.div>
   )
 } 
