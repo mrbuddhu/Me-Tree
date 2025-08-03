@@ -10,34 +10,30 @@ interface LayoutSelectorProps {
 }
 
 const layoutOptions = [
-     {
-     type: 'grid' as LayoutType,
-     name: 'Grid',
-     icon: Grid,
-     description: 'Grid layout',
-   },
-   {
-     type: 'row' as LayoutType,
-     name: 'Row',
-     icon: List,
-     description: 'List layout',
-   },
-   {
-     type: 'bento' as LayoutType,
-     name: 'Bento',
-     icon: Layout,
-     description: 'Featured layout',
-   },
+  {
+    type: 'grid' as LayoutType,
+    name: 'Grid',
+    icon: Grid,
+    description: 'Grid layout',
+  },
+  {
+    type: 'row' as LayoutType,
+    name: 'Row',
+    icon: List,
+    description: 'List layout',
+  },
+  {
+    type: 'bento' as LayoutType,
+    name: 'Bento',
+    icon: Layout,
+    description: 'Featured layout',
+  },
 ]
 
 export default function LayoutSelector({ currentLayout, onLayoutChange }: LayoutSelectorProps) {
   return (
-    <div className="flex flex-col items-center space-y-4">
-      <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-300">
-        Choose Your Layout
-      </h3>
-      
-      <div className="flex space-x-2">
+    <div className="flex flex-col items-center space-y-6">
+      <div className="flex space-x-3">
         {layoutOptions.map((option) => {
           const Icon = option.icon
           const isActive = currentLayout === option.type
@@ -49,22 +45,31 @@ export default function LayoutSelector({ currentLayout, onLayoutChange }: Layout
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`
-                relative px-4 py-3 rounded-lg border-2 transition-all duration-200
+                relative px-6 py-4 rounded-2xl border-2 transition-all duration-300 backdrop-blur-sm
                 ${isActive 
-                  ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300' 
-                  : 'border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 hover:border-primary-300 dark:hover:border-primary-700'
+                  ? 'border-white/30 bg-white/10 text-white shadow-2xl shadow-white/10' 
+                  : 'border-white/10 bg-white/5 text-white/70 hover:border-white/20 hover:bg-white/10 hover:text-white'
                 }
               `}
             >
-              <div className="flex items-center space-x-2">
-                <Icon className="w-5 h-5" />
-                <span className="font-medium">{option.name}</span>
+              <div className="flex items-center space-x-3">
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                  isActive 
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' 
+                    : 'bg-white/10 text-white/70'
+                }`}>
+                  <Icon className="w-5 h-5" />
+                </div>
+                <div className="text-left">
+                  <div className="font-semibold text-lg">{option.name}</div>
+                  <div className="text-sm opacity-70">{option.description}</div>
+                </div>
               </div>
               
               {isActive && (
                 <motion.div
                   layoutId="activeLayout"
-                  className="absolute inset-0 border-2 border-primary-500 rounded-lg"
+                  className="absolute inset-0 border-2 border-white/30 rounded-2xl"
                   initial={false}
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
@@ -72,12 +77,6 @@ export default function LayoutSelector({ currentLayout, onLayoutChange }: Layout
             </motion.button>
           )
         })}
-      </div>
-      
-      <div className="text-center">
-        <p className="text-sm text-slate-500 dark:text-slate-500">
-          {layoutOptions.find(opt => opt.type === currentLayout)?.description}
-        </p>
       </div>
     </div>
   )
